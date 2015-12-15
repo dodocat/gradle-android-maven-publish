@@ -1,0 +1,16 @@
+group 'org.quanqi'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.4'
+    compile 'com.android.tools.build:gradle:1.5.0'
+    compile gradleApi()
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
