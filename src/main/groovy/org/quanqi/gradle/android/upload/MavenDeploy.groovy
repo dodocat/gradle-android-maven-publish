@@ -62,24 +62,21 @@ class MavenDeploy {
         httpClient.setConnectTimeout(10, TimeUnit.SECONDS)
         httpClient.setReadTimeout(60, TimeUnit.SECONDS)
 
-        MultipartBuilder builder = new MultipartBuilder();
-        builder.addFormDataPart('r', repository)
-        builder.addFormDataPart('g', group)
-        builder.addFormDataPart('a', artifact)
-        builder.addFormDataPart('v', version)
-        builder.addFormDataPart('p', packaging)
-        builder.addFormDataPart('e', extension)
-        builder.addFormDataPart('c', classifier)
-
-        builder.addFormDataPart('file', file.name, RequestBody.create(MediaType.parse("maven/$packaging"), file))
-        builder.addFormDataPart('hasPom', 'false')
+        MultipartBuilder builder = new MultipartBuilder()
+                .addFormDataPart('r', repository)
+                .addFormDataPart('g', group)
+                .addFormDataPart('a', artifact)
+                .addFormDataPart('v', version)
+                .addFormDataPart('p', packaging)
+                .addFormDataPart('e', extension)
+                .addFormDataPart('c', classifier)
+                .addFormDataPart('file', file.name, RequestBody.create(MediaType.parse("maven/$packaging"), file))
+                .addFormDataPart('hasPom', 'false')
 
         Request request = new Request.Builder().url(url)
                 .addHeader("Authorization", Credentials.basic(user, password))
                 .post(builder.build())
                 .build()
         def response = httpClient.newCall(request).execute()
-        print(response.body().string())
-        println('end call')
     }
 }
