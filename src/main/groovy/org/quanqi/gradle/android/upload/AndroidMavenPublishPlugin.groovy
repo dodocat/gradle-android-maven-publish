@@ -37,7 +37,8 @@ class AndroidMavenPublishPlugin implements Plugin<Project> {
 
         android.applicationVariants.all { ApplicationVariant variant ->
 
-            AndroidMavenPublishTask task = project.tasks.create("publish${variant.name.capitalize()}ToMaven", AndroidMavenPublishTask)
+            AndroidMavenPublishTask task = project.tasks.create("publish${variant.name.capitalize()}ToMaven",
+                    AndroidMavenPublishTask)
             task.group = GROUP_NAME
             task.description = "publish ${variant.name} to maven"
             task.variant = variant

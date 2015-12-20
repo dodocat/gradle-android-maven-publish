@@ -23,6 +23,15 @@ buildscript {
 
 apply plugin: 'org.quanqi.gradle.android-maven-publish'
 
+// caonfigration default values below
+androidMavenPublish {
+    String url = "http://localhost:8081/nexus/service/local/artifact/maven/content"
+    String user = 'admin'
+    String password = 'admin123'
+    String repository = 'ci' // the repository id in you maven repo
+    String groupId = project.group
+    String artifactId = project.name
+}
 ```
 
 View tasks
