@@ -42,5 +42,5 @@ View tasks
 run task
 
 ```
-./gradle publishToMaven
+./gradlew publishToMaven
 ```
